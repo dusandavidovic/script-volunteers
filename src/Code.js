@@ -25,3 +25,17 @@ function copyActive() {
   Response.update(Properties.get(), RowProcessOptions.ACTIVE);
   Logger.log("Copy active completed");
 }
+
+function getSheetValues(id, sheetName) {
+  /*
+   * 1.
+   *
+   */
+
+  const sob = new SheetOb();
+  sob.open(id, sheetName);
+  const header = sob.getHeader();
+  console.log(header);
+  const values = sob.getValues();
+  console.log(values);
+}

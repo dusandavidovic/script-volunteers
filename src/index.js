@@ -16,5 +16,7 @@ function test() {
 function testApi() {
   console.log("Function TestApi()");
 
-  doGet();
+  getSheetValues(PROPERTIES.test.target.id, "Sheet1"); // ...2023/voluntersDB
+
+  console.log("Function TestApi() completed");
 }
