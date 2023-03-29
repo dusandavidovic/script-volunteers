@@ -1,0 +1,13 @@
+function doGet(e) {
+  if (typeof e !== "undefined") {
+    console.log("api-client doGet....", JSON.stringify(e));
+    return ContentService.createTextOutput(JSON.stringify(e));
+  }
+}
+
+function doPost(e) {
+  if (typeof e !== "undefined") {
+    console.log.log("api-client doPost....", JSON.stringify(e));
+    return ContentService.createTextOutput(JSON.stringify(e));
+  }
+}

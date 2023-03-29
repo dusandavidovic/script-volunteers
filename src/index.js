@@ -12,3 +12,9 @@ function test() {
   console.log(Properties.getSeries());
   console.log(Properties.get());
 }
+
+function testApi() {
+  console.log("Function TestApi()");
+
+  doGet();
+}
