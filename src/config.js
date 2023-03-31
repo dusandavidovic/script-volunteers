@@ -60,8 +60,8 @@ const WEB_API = {
     prod: 2,
   },
   actions: {
-    event: "getEvents",
-    eventSubs: "getEventSubsriptions",
+    event: 1,
+    eventSubs: 2,
   },
   production: {
     events: {
