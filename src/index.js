@@ -13,18 +13,27 @@ function test() {
   console.log(Properties.get());
 }
 
-function testApi() {
-  console.log("Function TestApi()");
+function testEvent() {
+  console.log("Function start");
 
-  getSheetValues(PROPERTIES.test.target.id, "Sheet1"); // ...2023/voluntersDB
+  getEvents(WEB_API.runMode.test); // ...2023/voluntersDB
 
-  console.log("Function TestApi() completed");
+  console.log("Function completed");
 }
 
-function testApiObj() {
+function testEventSubscriptions() {
   console.log("Function TestApiObj()");
 
-  const shObj = getSheetObjects(PROPERTIES.test.target.id, "Sheet1"); // ...2023/voluntersDB
+  const shObj = getEventSubscriptions(WEB_API.runMode.test); // ...2023/voluntersDB
 
   console.log("Function TestApiObj() completed");
+}
+
+function testAllDataObject() {
+  console.log("Function start");
+  const sob = new SheetOb();
+  sob.open(PROPERTIES.test.target.id, "Sheet1"); // ...2023/voluntersDB
+  const valObj = sob.getAllValuesObject();
+
+  console.log("Function completed");
 }

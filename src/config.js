@@ -1,3 +1,6 @@
+/*
+ ** Constants that are used in library mode, for populating DB
+ */
 const PROPERTIES = {
   prod: {
     source: {
@@ -29,7 +32,7 @@ const PROPERTIES = {
       id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/	2023/events
       sheets: {
         header: "header",
-        header: "detail",
+        detail: "detail",
       },
     },
   },
@@ -46,4 +49,50 @@ const SERIES = {
   tuesday: "tuesday",
   thursday: "thursday",
   fall: "fall",
+};
+
+/*
+ ** Constants that are used in WEB_API mode (script executed from another app)
+ */
+const WEB_API = {
+  runMode: {
+    test: 1,
+    prod: 2,
+  },
+  actions: {
+    event: "getEvents",
+    eventSubs: "getEventSubsriptions",
+  },
+  production: {
+    events: {
+      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/2023/events
+      sheets: {
+        header: "header",
+        detail: "detail",
+      },
+    },
+    eventSubscriptions: {
+      id: "18Nsn_ky8clUSAYbJaH6kwaidqGRKIBoZdLP9WfbMF5s", // .../racing@BHYC/volunteersManagement/2023/volunteersDB
+      sheets: {
+        main: "Sheet1",
+        counter: "counter",
+      },
+    },
+  },
+  test: {
+    events: {
+      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/	2023/events
+      sheets: {
+        header: "header",
+        detail: "detail",
+      },
+    },
+    eventSubscriptions: {
+      id: "18Nsn_ky8clUSAYbJaH6kwaidqGRKIBoZdLP9WfbMF5s", // .../racing@BHYC/volunteersManagement/2023/volunteersDB
+      sheets: {
+        main: "Sheet1",
+        counter: "counter",
+      },
+    },
+  },
 };

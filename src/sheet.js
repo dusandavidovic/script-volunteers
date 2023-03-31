@@ -100,6 +100,15 @@ var SheetOb = function () {
     if (!dataOb_) self.refresh();
     return dataOb_;
   };
+  self.getAllValuesObject = function () {
+    if (!values_) self.refresh();
+    const valuesObject = [];
+    for (var i in values_) {
+      const rowObj = Util.makeDataOb(headerOb_, values_[i]);
+      valuesObject.push(rowObj[0]);
+    }
+    return valuesObject;
+  };
 
   /**
    * get the data values as array
