@@ -25,6 +25,13 @@ const PROPERTIES = {
       id: "18Nsn_ky8clUSAYbJaH6kwaidqGRKIBoZdLP9WfbMF5s", // .../racing@BHYC/volunteersManagement/2023/volunteersDB
       cal: "Event Subscription", //calendar name
     },
+    events: {
+      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/	2023/events
+      sheets: {
+        header: "header",
+        header: "detail",
+      },
+    },
   },
 };
 

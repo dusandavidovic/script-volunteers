@@ -20,3 +20,11 @@ function testApi() {
 
   console.log("Function TestApi() completed");
 }
+
+function testApiObj() {
+  console.log("Function TestApiObj()");
+
+  const shObj = getSheetObjects(PROPERTIES.test.target.id, "Sheet1"); // ...2023/voluntersDB
+
+  console.log("Function TestApiObj() completed");
+}

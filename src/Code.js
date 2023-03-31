@@ -27,15 +27,24 @@ function copyActive() {
 }
 
 function getSheetValues(id, sheetName) {
-  /*
-   * 1.
-   *
-   */
-
   const sob = new SheetOb();
   sob.open(id, sheetName);
   const header = sob.getHeader();
-  console.log(header);
+  //  console.log(header);
   const values = sob.getValues();
-  console.log(values);
+
+  return [header, ...values];
+}
+
+function getSheetObjects(id, sheetName) {
+  const sob = new SheetOb();
+  sob.open(id, sheetName);
+  // add event list here and return TBD
+
+  return {
+    name: sob.getName(),
+    headerObject: sob.getHeaderOb(),
+    header: sob.getHeader(),
+    data: sob.getValues(),
+  };
 }

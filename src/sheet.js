@@ -27,6 +27,10 @@ var SheetOb = function () {
     return self;
   };
 
+  self.getName = function () {
+    return name_;
+  };
+
   /**
    * get the spreadsheet object
    * @param {Spreadsheet}
@@ -92,7 +96,7 @@ var SheetOb = function () {
    * get the data object , provoke a refresh if its not already done
    * @return {object} a JSON object represetnting the sheet data
    */
-  self.getData = function () {
+  self.getDataOb = function () {
     if (!dataOb_) self.refresh();
     return dataOb_;
   };
