@@ -88,7 +88,7 @@ var Response = (function (response) {
 
     // parse Select races and than compare to Series info
     // and create row per race !!!
-    var newRows = response.processOneResponse(fsLastRow, fsHeaderOb, tsHeaderOb);
+    var newRows = response.processOneResponse(fsLastRow, fsHeaderOb, tsHeaderOb, ts.getLastRow());
     for (i in newRows) {
       if (newRows[i]) ts.appendRow(newRows[i]); // add row to target
     }
@@ -109,10 +109,11 @@ var Response = (function (response) {
    * @param {object} response header
    * @param {object} target header
    */
-  response.processOneResponse = function (lastRow, fromHdr, toHdr) {
+  response.processOneResponse = function (lastRow, fromHdr, toHdr, toNumberOfRows) {
     var rs = new RaceSeries().getSerie(Properties.getSeries()); //race series info, see races2016 sheet
     var races = lastRow[fromHdr.selectRaces].split(","); //response - selected races
     var rows = [];
+    var id = toNumberOfRows - 1; // remove header
     for (var i in races) {
       var lookup = rs[1].filter(function (row, idx) {
         return races[i].trim() == row[2];
@@ -120,30 +121,36 @@ var Response = (function (response) {
 
       if (lookup.length > 0) {
         // only when match is found...perform mapping
-        var row = response.mapLine(toHdr, fromHdr, lookup[0], lastRow);
+        var row = response.mapLine(toHdr, fromHdr, lookup[0], lastRow, ++id);
         rows.push(row);
       }
     }
     return rows;
   };
 
-  response.mapLine = function (toHdr, fromHdr, race, fromRow) {
+  response.mapLine = function (toHdr, fromHdr, race, fromRow, index) {
     let row = [];
 
-    row[toHdr.eventID] = race[0];
+    row[toHdr.id] = index;
+    row[toHdr.event] = race[0];
     row[toHdr.eventDate] = race[1];
-    row[toHdr.date] = race[2];
+    row[toHdr.formatedEventDate] = race[2];
 
     row[toHdr.timestamp] = fromRow[[fromHdr.timestamp]];
-    row[toHdr.name] = fromRow[[fromHdr.lastName]]
-      ? fromRow[[fromHdr.lastName]] + ", " + fromRow[[fromHdr.firstName]]
-      : fromRow[[fromHdr.firstName]];
-    row[toHdr.email] = fromRow[[fromHdr.emailAddress]];
+    row[toHdr.name] = // fromRow[[fromHdr.lastName]]
+      //   ? fromRow[[fromHdr.lastName]] + ", " + fromRow[[fromHdr.firstName]]
+      //   : fromRow[[fromHdr.firstName]]
+      (
+        !fromRow[[fromHdr.lastName]]
+          ? fromRow[[fromHdr.firstName]]
+          : fromRow[[fromHdr.lastName]] + ", " + fromRow[[fromHdr.firstName]]
+      ).toUpperCase();
+    row[toHdr.email] = fromRow[[fromHdr.email]];
     row[toHdr.task] = fromRow[[fromHdr.task]];
 
     row[toHdr.skipperProgram] = fromRow[[fromHdr.participatingInSkipperProgram]];
-    row[toHdr.boatName] = fromRow[[fromHdr.boatName]];
-    row[toHdr.rewCount] = fromRow[[fromHdr.numberOfPeople]];
+    row[toHdr.boatName] = fromRow[[fromHdr.boatName]].toUpperCase();
+    row[toHdr.crewCount] = fromRow[[fromHdr.numberOfPeople]];
     row[toHdr.mobile] = fromRow[[fromHdr.mobileNumber]];
 
     if (row[toHdr.skipperProgram] !== "Yes") row[toHdr.crewCount] = 1;

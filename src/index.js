@@ -4,9 +4,11 @@ function test() {
   //console.log(RACE_SERIES);
   //console.log(PROPERTIES);
 
-  var mode;
-  init(mode, SERIES.thursday);
+  // var mode;
+  // init(mode, SERIES.thursday);
   //init(RunMode.TEST, SERIES.thursday);
+  init(RunMode.TEST, SERIES.thursday);
+  copyLastResponse(RunMode.TEST);
 
   console.log(Properties.getMode());
   console.log(Properties.getSeries());

@@ -11,7 +11,7 @@ function init(runMode, series) {
 
 function copyLastResponse(runMode) {
   // assume that init()  was run previously
-  Response.update(Properties.get(), true);
+  Response.update(Properties.get(), RowProcessOptions.LAST);
   Logger.log("copyLastResponse");
 }
 function copyIndex(index) {

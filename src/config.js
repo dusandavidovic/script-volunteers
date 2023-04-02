@@ -5,31 +5,37 @@ const PROPERTIES = {
   prod: {
     source: {
       //  always take first sheet:
-      tuesday: "1YYGHdMdE7OSjLpO3RIwJL0MyUbO9-hAxk8pgoPV_6ro", // .../volunteersManagement/raceVolunteersTuesday (Response)
-      thursday: "1sDRZEQW7Ieu9dXQAUbI9SPhDOsI8EHr2zjCgcRwcuy8", // .../volunteersManagement/raceVolunteersThursday (Responses)
-      fall: "1xq6MOh8RiDMkKGIsh6WWxA4OsU_0VdxSfsz_TgE95gg", // .../volunteersManagement/raceVolunteersFall (Responses)
+      tuesday: "1jjBVRV4fhs8qt8H_jfc6HnFB7MeNqNO9wFyGdeiFecE", //  /My Drive/racing@BHYC/volunteersManagement/2023/tuesdaySeriesSubscription (Responses)
+      thursday: "1oUfXdEIeJK8LI3-RaTRCUziqB1Rt4GV7fjBUb9jst_s", // .../racing@BHYC/volunteersManagement/2023/VolunteersThursday (Responses)
+      fall: "1jYzj0mTuOwu4jnYUKmkaYjxoSg2shUte5SQVayZV1A8", // .../racing@BHYC/volunteersManagement/2023/fallSeriesSubscription (Responses)
     },
     target: {
       //  always take first sheet:
-      id: "1bPH3AFO5ZPq4CpWi6AA-YuGmthwPDAyQDQXhsIeqdRU", // .../volunteersManagement/raceVolunteers
+      id: "1YJM8O7pyAsv9Y8J8I5EGFoYR-6t8UKIeV7Gzf8tnx0Y", // .../racing@BHYC/volunteersManagement/2023/eventSubscription
       cal: "Event Subscription", //calendar name
+    },
+    events: {
+      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/2023/events
+      sheets: {
+        header: "header",
+        detail: "detail",
+      },
     },
   },
   test: {
     source: {
       //  always take first sheet:
-
-      tuesday: "", //
+      tuesday: "1jjBVRV4fhs8qt8H_jfc6HnFB7MeNqNO9wFyGdeiFecE", //  /My Drive/racing@BHYC/volunteersManagement/2023/tuesdaySeriesSubscription (Responses)
       thursday: "1oUfXdEIeJK8LI3-RaTRCUziqB1Rt4GV7fjBUb9jst_s", // .../racing@BHYC/volunteersManagement/2023/VolunteersThursday (Responses)
-      fall: "", // ...
+      fall: "1jYzj0mTuOwu4jnYUKmkaYjxoSg2shUte5SQVayZV1A8", // .../racing@BHYC/volunteersManagement/2023/fallSeriesSubscription (Responses)
     },
     target: {
       //  always take first sheet:
-      id: "18Nsn_ky8clUSAYbJaH6kwaidqGRKIBoZdLP9WfbMF5s", // .../racing@BHYC/volunteersManagement/2023/volunteersDB
+      id: "1YJM8O7pyAsv9Y8J8I5EGFoYR-6t8UKIeV7Gzf8tnx0Y", // .../racing@BHYC/volunteersManagement/2023/eventSubscription
       cal: "Event Subscription", //calendar name
     },
     events: {
-      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/	2023/events
+      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/2023/events
       sheets: {
         header: "header",
         detail: "detail",
@@ -45,7 +51,8 @@ const RACE_SERIES = {
 
 const APP_NAME = "rcVolunteer";
 
-const SERIES = {
+//const SERIES = {
+var SERIES = {
   tuesday: "tuesday",
   thursday: "thursday",
   fall: "fall",
@@ -69,6 +76,8 @@ const WEB_API = {
       sheets: {
         header: "header",
         detail: "detail",
+        task: "task",
+        ranger: "ranger", //for using Form Ranger
       },
     },
     eventSubscriptions: {
@@ -85,12 +94,14 @@ const WEB_API = {
       sheets: {
         header: "header",
         detail: "detail",
+        task: "task",
+        ranger: "ranger", //for using Form Ranger
       },
     },
     eventSubscriptions: {
-      id: "18Nsn_ky8clUSAYbJaH6kwaidqGRKIBoZdLP9WfbMF5s", // .../racing@BHYC/volunteersManagement/2023/volunteersDB
+      id: "1YJM8O7pyAsv9Y8J8I5EGFoYR-6t8UKIeV7Gzf8tnx0Y", // .../racing@BHYC/volunteersManagement/2023/evantSubscription
       sheets: {
-        main: "Sheet1",
+        main: "main",
         counter: "counter",
       },
     },

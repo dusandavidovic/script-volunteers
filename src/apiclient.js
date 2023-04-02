@@ -2,6 +2,9 @@ function doGet(e) {
   if (typeof e !== "undefined") {
     console.log("api-client doGet...parameters", JSON.stringify(e.parameters));
     const data = getEventSubscriptions(e.parameter.mode);
+    // TEST!!!
+    data.mode = e.parameter.mode;
+    data.action = e.parameter.action;
 
     // if (e.parameters.action === WEB_API.actions.event) {
     // } else {
