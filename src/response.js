@@ -134,24 +134,24 @@ var Response = (function (response) {
     row[toHdr.id] = index;
     row[toHdr.event] = race[0];
     row[toHdr.eventDate] = race[1];
-    row[toHdr.formatedEventDate] = race[2];
+    //row[toHdr.formatedEventDate] = race[2];
+    row[toHdr.date] = race[2];
 
     row[toHdr.timestamp] = fromRow[[fromHdr.timestamp]];
-    row[toHdr.name] = // fromRow[[fromHdr.lastName]]
-      //   ? fromRow[[fromHdr.lastName]] + ", " + fromRow[[fromHdr.firstName]]
-      //   : fromRow[[fromHdr.firstName]]
-      (
-        !fromRow[[fromHdr.lastName]]
-          ? fromRow[[fromHdr.firstName]]
-          : fromRow[[fromHdr.lastName]] + ", " + fromRow[[fromHdr.firstName]]
-      ).toUpperCase();
+    row[toHdr.name] = (
+      !fromRow[[fromHdr.lastName]]
+        ? fromRow[[fromHdr.firstName]]
+        : fromRow[[fromHdr.lastName]] + ", " + fromRow[[fromHdr.firstName]]
+    ).toUpperCase();
     row[toHdr.email] = fromRow[[fromHdr.email]];
     row[toHdr.task] = fromRow[[fromHdr.task]];
 
     row[toHdr.skipperProgram] = fromRow[[fromHdr.participatingInSkipperProgram]];
     row[toHdr.boatName] = fromRow[[fromHdr.boatName]].toUpperCase();
     row[toHdr.crewCount] = fromRow[[fromHdr.numberOfPeople]];
-    row[toHdr.mobile] = fromRow[[fromHdr.mobileNumber]];
+
+    let phone = fromRow[[fromHdr.mobileNumber]].toString();
+    row[toHdr.mobile] = phone.replace(/^(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"); // format phone number
 
     if (row[toHdr.skipperProgram] !== "Yes") row[toHdr.crewCount] = 1;
 
