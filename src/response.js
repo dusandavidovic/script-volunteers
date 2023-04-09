@@ -131,6 +131,7 @@ var Response = (function (response) {
   response.mapLine = function (toHdr, fromHdr, race, fromRow, index) {
     let row = [];
 
+    row[toHdr.series] = Properties.getSeries();
     row[toHdr.id] = index;
     row[toHdr.event] = race[0];
     row[toHdr.eventDate] = race[1];
@@ -142,12 +143,12 @@ var Response = (function (response) {
       !fromRow[[fromHdr.lastName]]
         ? fromRow[[fromHdr.firstName]]
         : fromRow[[fromHdr.lastName]] + ", " + fromRow[[fromHdr.firstName]]
-    ).toUpperCase();
+    ).capitalizeFirstLetters();
     row[toHdr.email] = fromRow[[fromHdr.email]];
     row[toHdr.task] = fromRow[[fromHdr.task]];
 
     row[toHdr.skipperProgram] = fromRow[[fromHdr.participatingInSkipperProgram]];
-    row[toHdr.boatName] = fromRow[[fromHdr.boatName]].toUpperCase();
+    row[toHdr.boatName] = fromRow[[fromHdr.boatName]].capitalizeFirstLetters();
     row[toHdr.crewCount] = fromRow[[fromHdr.numberOfPeople]];
 
     let phone = fromRow[[fromHdr.mobileNumber]].toString();
