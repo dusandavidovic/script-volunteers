@@ -148,7 +148,7 @@ var Response = (function (response) {
     row[toHdr.task] = fromRow[[fromHdr.task]];
 
     row[toHdr.skipperProgram] = fromRow[[fromHdr.participatingInSkipperProgram]];
-    row[toHdr.boatName] = Util.capitalizeFirstLetters()(fromRow[[fromHdr.boatName]]);
+    row[toHdr.boatName] = Util.capitalizeFirstLetters(fromRow[[fromHdr.boatName]]);
     row[toHdr.crewCount] = fromRow[[fromHdr.numberOfPeople]];
 
     let phone = fromRow[[fromHdr.mobileNumber]].toString();

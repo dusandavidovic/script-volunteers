@@ -38,9 +38,10 @@ var Util = (function (util) {
   };
 
   util.capitalizeFirstLetters = function (str) {
-    return str.toLowerCase().replace(/^\w|\s\w/g, function (letter) {
-      return letter.toUpperCase();
-    });
+    if (str)
+      return str.toLowerCase().replace(/^\w|\s\w/g, function (letter) {
+        return letter.toUpperCase();
+      });
   };
 
   return util;
