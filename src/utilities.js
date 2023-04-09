@@ -37,12 +37,11 @@ var Util = (function (util) {
     });
   };
 
-
-  util.capitalizeFirstLetters(str){
+  util.capitalizeFirstLetters = function (str) {
     return str.toLowerCase().replace(/^\w|\s\w/g, function (letter) {
-        return letter.toUpperCase();
-    })
-  }
+      return letter.toUpperCase();
+    });
+  };
 
   return util;
 })(Util || {});

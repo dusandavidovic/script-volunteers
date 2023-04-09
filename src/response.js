@@ -139,16 +139,16 @@ var Response = (function (response) {
     row[toHdr.date] = race[2];
 
     row[toHdr.timestamp] = fromRow[[fromHdr.timestamp]];
-    row[toHdr.name] = (
+    row[toHdr.name] = Util.capitalizeFirstLetters(
       !fromRow[[fromHdr.lastName]]
         ? fromRow[[fromHdr.firstName]]
         : fromRow[[fromHdr.lastName]] + ", " + fromRow[[fromHdr.firstName]]
-    ).capitalizeFirstLetters();
+    );
     row[toHdr.email] = fromRow[[fromHdr.email]];
     row[toHdr.task] = fromRow[[fromHdr.task]];
 
     row[toHdr.skipperProgram] = fromRow[[fromHdr.participatingInSkipperProgram]];
-    row[toHdr.boatName] = fromRow[[fromHdr.boatName]].capitalizeFirstLetters();
+    row[toHdr.boatName] = Util.capitalizeFirstLetters()(fromRow[[fromHdr.boatName]]);
     row[toHdr.crewCount] = fromRow[[fromHdr.numberOfPeople]];
 
     let phone = fromRow[[fromHdr.mobileNumber]].toString();
