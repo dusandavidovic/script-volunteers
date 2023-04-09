@@ -92,6 +92,12 @@ var Response = (function (response) {
     for (i in newRows) {
       if (newRows[i]) ts.appendRow(newRows[i]); // add row to target
     }
+    // sort sheet by Event Date ascending, series descending
+    ts.getRange(2, 1, ts.getLastRow(), ts.getLastColumn()).sort({
+      column: 11,
+      ascending: true,
+    });
+
     // when requested add calendar reminder
     if (fsLastRow[fsHeaderOb.reminder] === "Yes") {
       try {
@@ -148,7 +154,7 @@ var Response = (function (response) {
     row[toHdr.task] = fromRow[[fromHdr.task]];
 
     row[toHdr.skipperProgram] = fromRow[[fromHdr.participatingInSkipperProgram]];
-    row[toHdr.boatName] = Util.capitalizeFirstLetters(fromRow[[fromHdr.boatName]]);
+    row[toHdr.boat] = Util.capitalizeFirstLetters(fromRow[[fromHdr.boatName]]);
     row[toHdr.crewCount] = fromRow[[fromHdr.numberOfPeople]];
 
     let phone = fromRow[[fromHdr.mobileNumber]].toString();
