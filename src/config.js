@@ -1,5 +1,6 @@
 /*
  ** Constants that are used in library mode, for populating DB
+ ** NOTE: Both Test and Prod are identical currently
  */
 const PROPERTIES = {
   prod: {
@@ -15,7 +16,7 @@ const PROPERTIES = {
       cal: "Event Subscription", //calendar name
     },
     events: {
-      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/2023/events
+      id: "1Bw14wA2YIDwbsjG2pjYnarCkZtaepBEPG8Uq_AmVdMw", // /My Drive/racing@BHYC/volunteersManagement/2023/events
       sheets: {
         header: "header",
         detail: "detail",
@@ -35,7 +36,7 @@ const PROPERTIES = {
       cal: "Event Subscription", //calendar name
     },
     events: {
-      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/2023/events
+      id: "1Bw14wA2YIDwbsjG2pjYnarCkZtaepBEPG8Uq_AmVdMw", // /My Drive/racing@BHYC/volunteersManagement/2023/events
       sheets: {
         header: "header",
         detail: "detail",
@@ -72,7 +73,7 @@ const WEB_API = {
   },
   production: {
     events: {
-      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/2023/events
+      id: "1Bw14wA2YIDwbsjG2pjYnarCkZtaepBEPG8Uq_AmVdMw", // /My Drive/racing@BHYC/volunteersManagement/2023/events
       sheets: {
         header: "header",
         detail: "detail",
@@ -90,7 +91,7 @@ const WEB_API = {
   },
   test: {
     events: {
-      id: "18oPo8OKxAtQX8KYCbYQBzsAyuU-jX0vpFwvGIWjKT_o", // /My Drive/racing@BHYC/volunteersManagement/	2023/events
+      id: "1Bw14wA2YIDwbsjG2pjYnarCkZtaepBEPG8Uq_AmVdMw", // /My Drive/racing@BHYC/volunteersManagement/	2023/events
       sheets: {
         header: "header",
         detail: "detail",

@@ -1,13 +1,8 @@
 // test functions
 function test() {
   console.log("Function Test()");
-  //console.log(RACE_SERIES);
-  //console.log(PROPERTIES);
-
-  // var mode;
-  // init(mode, SERIES.thursday);
   //init(RunMode.TEST, SERIES.thursday);
-  init(RunMode.TEST, SERIES.thursday);
+  init(RunMode.TEST, SERIES.fall);
   copyLastResponse(RunMode.TEST);
 
   console.log(Properties.getMode());
@@ -18,7 +13,7 @@ function test() {
 function testEvent() {
   console.log("Function start");
 
-  getEvents(WEB_API.runMode.test); // ...2023/voluntersDB
+  const events = getEvents(WEB_API.runMode.test); // ...2023/voluntersDB
 
   console.log("Function completed");
 }

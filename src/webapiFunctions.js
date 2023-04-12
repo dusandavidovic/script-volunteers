@@ -1,10 +1,11 @@
 /**
  * functions executed from doGet/doPost, call from another APP
- *
+ * STILL IN  DEVELOPMENT/TEST stage
  **/
 
+// TEST - Returns only header
 function getEvents(runMode) {
-  // DO NOT USE
+  // DO NOT USE -
   const sob = new SheetOb();
   if ((runMode = WEB_API.runMode.test)) {
     sob.open(WEB_API.test.events.id, WEB_API.test.events.sheets.header);
