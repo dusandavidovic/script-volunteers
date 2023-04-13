@@ -6,7 +6,7 @@ var Util = (function (util) {
   "use strict";
 
   util.getHeaderObj = function (sheet) {
-    const sheetHead = fs.getRange(1, 1, 1, fs.getLastColumn()).getValues()[0]; // header row values
+    const sheetHead = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]; // header row values
     return util.makeHeaderOb(sheetHead);
   };
 

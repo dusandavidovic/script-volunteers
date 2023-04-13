@@ -27,10 +27,11 @@ var Response = (function (response) {
     var ts = response.openWorkbook(props.target.id).getSheets()[0];
 
     //
+    let processRow = [];
     switch (rowProcessOption) {
       case RowProcessOptions.ACTIVE:
-        const processRow = fs.getActiveRange().getValues()[0];
-        response.updateRow(Util.getHeaderObj(fs), Util.getHeaderObj(ts), processRow);
+        processRow = fs.getActiveRange().getValues()[0];
+        response.updateRow(Util.getHeaderObj(fs), ts, Util.getHeaderObj(ts), processRow);
         break;
       case RowProcessOptions.LAST:
         response.updateLastRow(fs, ts);
@@ -40,7 +41,7 @@ var Response = (function (response) {
         break;
       case RowProcessOptions.INDEX:
         processRow = fs.getRange(rowIndex, 1, 1, fs.getLastColumn()).getValues()[0];
-        response.updateRow(Util.getHeaderObj(fs), Util.getHeaderObj(ts), processRow);
+        response.updateRow(Util.getHeaderObj(fs), ts, Util.getHeaderObj(ts), processRow);
         break;
       default:
         break;
@@ -53,22 +54,19 @@ var Response = (function (response) {
    * @param {HeaderObject}  TO sheet header
    * @param [processRow] from row values
    */
-  response.updateRow = function (fsHeaderOb, tsHeaderOb, processRow) {
+  response.updateRow = function (fsHeaderOb, ts, tsHeaderOb, processRow) {
     // parse Select races and than compare to Series info
     // and create row per race !!!
     var newRows = response.processOneResponse(processRow, fsHeaderOb, tsHeaderOb);
     for (i in newRows) {
       if (newRows[i]) ts.appendRow(newRows[i]); // add row to target
     }
-    // when requested add calendar reminder
-    if (processRow[fsHeaderOb.reminder] === "Yes") {
-      try {
-        var props = Properties.get();
-        response.addReminder(props.target.cal, tsHeaderOb, newRows);
-      } catch (error) {
-        console.log(error);
-      }
-    }
+
+    // sort sheet by Event Date ascending, series descending
+    ts.getRange(2, 1, ts.getLastRow(), ts.getLastColumn()).sort({
+      column: 10,
+      ascending: true,
+    });
     return;
   };
 
@@ -94,7 +92,7 @@ var Response = (function (response) {
     }
     // sort sheet by Event Date ascending, series descending
     ts.getRange(2, 1, ts.getLastRow(), ts.getLastColumn()).sort({
-      column: 11,
+      column: 10,
       ascending: true,
     });
 
@@ -184,7 +182,44 @@ var Response = (function (response) {
    * @param {Sheet} fs the response sheet
    * @param {Sheet} ts the update sheet
    */
-  response.updateAll = function (fs, ts) {};
+  response.updateAll = function (fs, ts) {
+    var fsLastRow = fs.getRange(fs.getLastRow(), 1, 1, fs.getLastColumn()).getValues()[0];
+
+    var fsData = fs.getDataRange().getValues();
+    var fsHead = values_.shift();
+
+    var tsHead = ts.getRange(1, 1, 1, ts.getLastColumn()).getValues()[0]; // target header row
+    // make header objects so we know where are columns
+    var tsHeaderOb = Util.makeHeaderOb(tsHead);
+    var fsHeaderOb = Util.makeHeaderOb(fsHead);
+
+    // delete all target data for this series
+    // create new rows
+    fsData.forEach((fsRow) => {
+      var newRows = response.processOneResponse(fsRow, fsHeaderOb, tsHeaderOb, ts.getLastRow());
+      // add multiple rows TBD
+    });
+    //var newRows = response.processOneResponse(fsLastRow, fsHeaderOb, tsHeaderOb, ts.getLastRow());
+    // for (i in newRows) {
+    //   if (newRows[i]) ts.appendRow(newRows[i]); // add row to target
+    // }
+    // sort sheet by Event Date ascending, series descending
+    ts.getRange(2, 1, ts.getLastRow(), ts.getLastColumn()).sort({
+      column: 11,
+      ascending: true,
+    });
+
+    // // when requested add calendar reminder
+    // if (fsLastRow[fsHeaderOb.reminder] === "Yes") {
+    //   try {
+    //     var props = Properties.get();
+    //     response.addReminder(props.target.cal, tsHeaderOb, newRows);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+    return 1;
+  };
 
   response.getSourceId = function (props, name) {
     return props.source[name.toLowerCase()];

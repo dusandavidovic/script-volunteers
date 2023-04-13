@@ -25,3 +25,8 @@ function copyActive() {
   Response.update(Properties.get(), RowProcessOptions.ACTIVE);
   Logger.log("Copy active completed");
 }
+function copyAll() {
+  // assume that init()  was run previously
+  Response.update(Properties.get(), RowProcessOptions.ALL);
+  Logger.log("Copy active completed");
+}
